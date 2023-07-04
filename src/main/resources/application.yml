@@ -1,15 +1,16 @@
 spring:
   kafka:
     producer:
-      bootstrap-servers: asdfdfsa
-      key-serializer: org.apache.kafka.serialization.StringSerializer
-      value-serializer: org.apache.kafka.serialization.StringSerializer
-    consumer:
-      bootstrap-servers: asdfasdfasdf
-      key-serializer: org.apache.kafka.serialization.StringSerializer
-      value-serializer: org.apache.kafka.serialization.StringSerializer
+      bootstrap-servers: developeryhub.servicebus.windows.net:9093
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
     properties:
-      sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString"
-      sasl.mechanism: Plain
+      sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://developeryhub.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=7MeGYZsuZ6hVYxtKv9wW+KW0o7qUJokz88rBw=";
+      sasl.mechanism: PLAIN
       security.protocol: SASL_SSL
+
+    consumer:
+      bootstrap-servers: developery-kafka.servicebus.windows.net:9093
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
