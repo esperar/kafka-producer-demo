@@ -4,3 +4,12 @@ spring:
       bootstrap-servers:
       key-serializer: org.apache.kafka.serialization.StringSerializer
       value-serializer: org.apache.kafka.serialization.StringSerializer
+    consumer:
+      bootstrap-servers:
+      key-serializer: org.apache.kafka.serialization.StringSerializer
+      value-serializer: org.apache.kafka.serialization.StringSerializer
+
+    properties:
+      sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString"
+      sasl.mechanism: Plain
+      security.protocol: SASL_SSL

@@ -4,7 +4,6 @@ import org.slf4j.LoggerFactory
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
-import kotlin.math.log
 
 @Service
 class KafkaService(
@@ -19,7 +18,9 @@ class KafkaService(
 
         future.addCallback(
             { successCallback ->
-                logger.info("[producer] successCallback. offset: ${successCallback.recordMetadata.offset()}")
+                if (successCallback != null) {
+                    logger.info("[producer] successCallback. offset: ${successCallback.recordMetadata.offset()}")
+                }
             },
             { errorCallback ->
                 logger.error("[producer] errorCallback. msg: ${errorCallback.message}")
